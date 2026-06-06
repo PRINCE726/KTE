@@ -62,7 +62,7 @@ export default function GalaAdmin() {
       .eq("id", confirmDialog.id);
 
     if (error) {
-      toast({ title: "Erreur lors de la mise à jour", variant: "destructive" });
+      toast({ title: "Erreur lors de la mise à jour", variant: "error" });
     } else {
       toast({ title: "Statut mis à jour avec succès", variant: "default" });
       setInscriptions(inscriptions.map(inc => inc.id === confirmDialog.id ? { ...inc, statut: confirmDialog.action! } : inc));
@@ -245,7 +245,7 @@ export default function GalaAdmin() {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <DialogClose asChild>
+            <DialogClose>
               <Button variant="outline">Annuler</Button>
             </DialogClose>
             <Button 
