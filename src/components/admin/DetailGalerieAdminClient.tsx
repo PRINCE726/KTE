@@ -115,7 +115,7 @@ export default function DetailGalerieAdminClient({ galerieId, initialGalerie, in
     const { error } = await supabase.from("galerie_photos").upsert(updates);
     
     if (error) {
-      toast({ title: "Erreur de sauvegarde", variant: "destructive" });
+      toast({ title: "Erreur de sauvegarde", variant: "error" });
     } else {
       toast({ title: "Modifications enregistrées" });
       // Définir la première image comme couverture si disponible

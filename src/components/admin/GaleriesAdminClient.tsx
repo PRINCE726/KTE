@@ -54,7 +54,7 @@ export default function GaleriesAdminClient({ initialGaleries }: GaleriesAdminCl
     }]);
 
     if (error) {
-      toast({ title: "Erreur de création", variant: "destructive" });
+      toast({ title: "Erreur de création", variant: "error" });
     } else {
       toast({ title: "Galerie créée avec succès" });
       setCreateDialog(false);
@@ -69,7 +69,7 @@ export default function GaleriesAdminClient({ initialGaleries }: GaleriesAdminCl
     
     const { error } = await supabase.from("galeries").delete().eq("id", deleteDialog.id);
     if (error) {
-      toast({ title: "Erreur de suppression", variant: "destructive" });
+      toast({ title: "Erreur de suppression", variant: "error" });
     } else {
       toast({ title: "Galerie supprimée" });
       setGaleries(galeries.filter(g => g.id !== deleteDialog.id));
