@@ -161,7 +161,7 @@ export default function ArticlesAdmin() {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <DialogClose asChild>
+            <DialogClose>
               <Button variant="outline">Annuler</Button>
             </DialogClose>
             <Button 
