@@ -245,7 +245,7 @@ export default function EvenementsAdmin() {
               <textarea value={description} onChange={e => setDescription(e.target.value)} rows={3} className="w-full border border-[#E5E3DD] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#D4AF37] resize-none" placeholder="Détails de l'événement..." />
             </div>
             <DialogFooter className="mt-6">
-              <DialogClose asChild>
+              <DialogClose>
                 <Button variant="outline" type="button">Annuler</Button>
               </DialogClose>
               <Button type="submit" disabled={isSaving} className="bg-[#D4AF37] hover:bg-[#E8C84D] text-[#080808] font-bold">
@@ -264,7 +264,7 @@ export default function EvenementsAdmin() {
           </DialogHeader>
           <div className="text-sm text-[#666666]">Cette action est irréversible.</div>
           <DialogFooter>
-            <DialogClose asChild>
+            <DialogClose>
               <Button variant="outline">Annuler</Button>
             </DialogClose>
             <Button onClick={handleDelete} className="bg-[#C4622D] hover:bg-red-700 text-white">Oui, supprimer</Button>
