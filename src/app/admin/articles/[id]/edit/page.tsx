@@ -86,7 +86,7 @@ export default function ArticleEditor() {
     if (!file) return;
 
     if (file.size > 5 * 1024 * 1024) {
-      toast({ title: "L'image est trop lourde (5 Mo maximum)", variant: "destructive" });
+      toast({ title: "L'image est trop lourde (5 Mo maximum)", variant: "error" });
       return;
     }
 
