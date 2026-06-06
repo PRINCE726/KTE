@@ -38,7 +38,7 @@ export default function CaravaneAdmin() {
       .eq("id", id);
 
     if (error) {
-      toast({ title: "Erreur", variant: "destructive" });
+      toast({ title: "Erreur", variant: "error" });
     } else {
       toast({ title: "Statut mis à jour" });
       setDemandes(demandes.map(d => d.id === id ? { ...d, statut } : d));
