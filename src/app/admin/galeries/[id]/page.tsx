@@ -290,7 +290,7 @@ export default function GaleriePhotosAdmin({ params }: PageProps) {
           <DialogHeader><DialogTitle>Supprimer toutes les photos ?</DialogTitle></DialogHeader>
           <div className="text-sm text-[#666666]">Cette action est irréversible. Toutes les images seront retirées.</div>
           <DialogFooter>
-            <DialogClose asChild><Button variant="outline">Annuler</Button></DialogClose>
+            <DialogClose><Button variant="outline">Annuler</Button></DialogClose>
             <Button onClick={deleteAllPhotos} className="bg-[#C4622D] hover:bg-red-700 text-white">Oui, tout supprimer</Button>
           </DialogFooter>
         </DialogContent>
