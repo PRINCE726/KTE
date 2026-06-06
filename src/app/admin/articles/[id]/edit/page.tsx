@@ -105,7 +105,7 @@ export default function ArticleEditor() {
       });
 
     if (uploadError) {
-      toast({ title: `Erreur : ${uploadError.message}`, variant: "destructive" });
+      toast({ title: `Erreur : ${uploadError.message}`, variant: "error" });
       return;
     }
 
@@ -124,7 +124,7 @@ export default function ArticleEditor() {
       .replace(/(^-|-$)+/g, "");
 
     if (!titreNettoye || !slugNettoye) {
-      toast({ title: "Le titre et le slug sont requis", variant: "destructive" });
+      toast({ title: "Le titre et le slug sont requis", variant: "error" });
       return;
     }
 
@@ -147,7 +147,7 @@ export default function ArticleEditor() {
     if (isEditing) {
       const { error } = await supabase.from("articles").update(payload).eq("id", articleId);
       if (error) {
-        toast({ title: `Erreur de mise à jour : ${error.message}`, variant: "destructive" });
+        toast({ title: `Erreur de mise à jour : ${error.message}`, variant: "error" });
       } else {
         toast({ title: "Article mis à jour avec succès !" });
         setPublished(willPublish);
@@ -156,9 +156,9 @@ export default function ArticleEditor() {
       const { error } = await supabase.from("articles").insert([payload]);
       if (error) {
         if (error.code === '23505') {
-          toast({ title: "Ce slug existe déjà (l'URL doit être unique)", variant: "destructive" });
+          toast({ title: "Ce slug existe déjà (l'URL doit être unique)", variant: "error" });
         } else {
-          toast({ title: `Erreur Supabase : ${error.message} (Code ${error.code})`, variant: "destructive" });
+          toast({ title: `Erreur Supabase : ${error.message} (Code ${error.code})`, variant: "error" });
         }
       } else {
         toast({ title: "Article créé avec succès !" });
