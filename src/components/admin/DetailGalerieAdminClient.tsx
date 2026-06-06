@@ -75,7 +75,7 @@ export default function DetailGalerieAdminClient({ galerieId, initialGalerie, in
         .select();
 
       if (!error && data) {
-        setPhotos(prev => [...prev, ...data]);
+        setPhotos((prev: any) => [...prev, ...data]);
         toast({ title: `${data.length} photo(s) ajoutée(s)` });
       }
     }
@@ -132,7 +132,7 @@ export default function DetailGalerieAdminClient({ galerieId, initialGalerie, in
   const deletePhoto = async (id: string) => {
     const { error } = await supabase.from("galerie_photos").delete().eq("id", id);
     if (!error) {
-      setPhotos(prev => prev.filter(p => p.id !== id));
+      setPhotos((prev: any) => prev.filter(p => p.id !== id));
       toast({ title: "Photo supprimée" });
     }
   };
@@ -147,14 +147,14 @@ export default function DetailGalerieAdminClient({ galerieId, initialGalerie, in
   };
 
   const updateCaption = (id: string, legende: string) => {
-    setPhotos(prev => prev.map(p => p.id === id ? { ...p, legende } : p));
+    setPhotos((prev: any) => prev.map(p => p.id === id ? { ...p, legende } : p));
   };
 
   const togglePublish = async () => {
     const newStatus = !galerie.published;
     const { error } = await supabase.from("galeries").update({ published: newStatus }).eq("id", galerieId);
     if (!error) {
-      setGalerie(prev => ({ ...prev, published: newStatus }));
+      setGalerie((prev: any) => ({ ...prev, published: newStatus }));
       toast({ title: newStatus ? "Galerie publiée" : "Galerie passée en brouillon" });
     }
   };

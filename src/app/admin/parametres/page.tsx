@@ -37,7 +37,7 @@ export default function ParametresAdmin() {
         data.forEach(item => {
           newSettings[item.cle] = item.valeur || "";
         });
-        setSettings(prev => ({ ...prev, ...newSettings }));
+        setSettings((prev: any) => ({ ...prev, ...newSettings }));
       }
       setIsLoading(false);
     };
@@ -45,7 +45,7 @@ export default function ParametresAdmin() {
   }, []);
 
   const handleChange = (cle: string, valeur: string) => {
-    setSettings(prev => ({ ...prev, [cle]: valeur }));
+    setSettings((prev: any) => ({ ...prev, [cle]: valeur }));
   };
 
   const handleSaveSettings = async () => {
