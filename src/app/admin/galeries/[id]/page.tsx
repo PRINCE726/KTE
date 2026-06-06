@@ -117,7 +117,7 @@ export default function GaleriePhotosAdmin({ params }: PageProps) {
         const { error: uploadError } = await supabase.storage.from("galeries").upload(filePath, file);
         
         if (uploadError) {
-          toast({ title: `Erreur Storage: ${file.name}`, description: uploadError.message, variant: "destructive" });
+          toast({ title: `Erreur Storage: ${file.name}`, description: uploadError.message, variant: "error" });
           continue;
         }
 
@@ -137,11 +137,11 @@ export default function GaleriePhotosAdmin({ params }: PageProps) {
           await fetchGalerie();
           toast({ title: `${newPhotos.length} photo(s) ajoutée(s)`, variant: "success" });
         } else {
-          toast({ title: "Erreur Base de données", description: insertError.message, variant: "destructive" });
+          toast({ title: "Erreur Base de données", description: insertError.message, variant: "error" });
         }
       }
     } catch (err: any) {
-      toast({ title: "Erreur critique", description: err.message, variant: "destructive" });
+      toast({ title: "Erreur critique", description: err.message, variant: "error" });
     } finally {
       setIsUploading(false);
     }
@@ -175,7 +175,7 @@ export default function GaleriePhotosAdmin({ params }: PageProps) {
 
     const { error } = await supabase.from("galerie_photos").upsert(updates);
     if (error) {
-      toast({ title: "Erreur de sauvegarde", variant: "destructive" });
+      toast({ title: "Erreur de sauvegarde", variant: "error" });
     } else {
       toast({ title: "Modifications enregistrées", variant: "success" });
       if (photos.length > 0) {
