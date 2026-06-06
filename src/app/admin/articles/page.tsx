@@ -39,7 +39,7 @@ export default function ArticlesAdmin() {
     const { error } = await supabase.from("articles").delete().eq("id", deleteDialog.id);
     if (error) {
       // CORRECTION 2 : Variant standardisé pour shadcn toast
-      toast({ title: "Erreur lors de la suppression", variant: "destructive" });
+      toast({ title: "Erreur lors de la suppression", variant: "error" });
     } else {
       toast({ title: "Article supprimé" });
       setArticles(articles.filter(a => a.id !== deleteDialog.id));
