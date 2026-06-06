@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0A0A0A;
+  --color-foreground: #F5F0E8;
+  --color-card: #141414;
+  --color-card-foreground: #F5F0E8;
+  --color-border: #C9A84C;
+  --color-input: #141414;
+  --color-ring: #C9A84C;
+  --color-primary: #C9A84C;
+  --color-primary-foreground: #0A0A0A;
+  --color-muted: #141414;
+  --color-muted-foreground: #888888;
+  --color-accent: #C9A84C;
+  --color-accent-foreground: #0A0A0A;
+  --color-destructive: #C4622D;
+  --color-kte-green: #C9A84C;
+  --color-urgency: #C4622D;
+  --color-gold: #C9A84C;
+  --color-gold-hover: #D4B25E;
+
+  --color-kte-black: #0A0A0A;
+  --color-kte-white: #F5F0E8;
+  --color-kte-gold: #C9A84C;
+  --color-kte-card: #141414;
+  --color-kte-gray: #666666;
+
+  --font-serif: var(--font-playfair), serif;
+  --font-sans: var(--font-inter), sans-serif;
+}
+
+:root {
+  --background: #0A0A0A;
+  --foreground: #F5F0E8;
+}
+
+body {
+  background-color: #0A0A0A;
+  color: #F5F0E8;
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-playfair), serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #141414;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
+
+/* Animations */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Dots Grid Background Pattern */
+.bg-dots {
+  background-image: radial-gradient(rgba(201, 168, 76, 0.08) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+/* Brutalist Classes */
+.brutalist-card {
+  background: #141414;
+  border: 1px solid #C9A84C;
+}
+
+.brutalist-nav {
+  background: #0A0A0A;
+  border-bottom: 1px solid #C9A84C;
+}
