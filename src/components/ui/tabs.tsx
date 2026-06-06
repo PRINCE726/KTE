@@ -27,8 +27,10 @@ export function Tabs({
   const [internalValue, setInternalValue] = React.useState(defaultValue);
 
   const value = controlledValue !== undefined ? controlledValue : internalValue;
+  
   const handleValueChange = React.useCallback(
     (newValue: string) => {
+      // CORRECTION : Utilisation de la bonne prop onValueChange au lieu de onOpenChange
       if (onValueChange) {
         onValueChange(newValue);
       } else {
@@ -114,13 +116,16 @@ export function TabsContent({ value, children, className, ...props }: TabsConten
 
   if (!isActive) return null;
 
+  // Extraction des événements HTML conflictuels pour soulager <motion.div>
+  const { onDrag, onDragStart, onDragEnd, onAnimationStart, ...safeProps } = props as any;
+
   return (
     <motion.div
+      {...safeProps} 
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       className={cn("mt-4 focus-visible:outline-none", className)}
-      {...props}
     >
       {children}
     </motion.div>

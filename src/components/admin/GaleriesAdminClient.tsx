@@ -94,7 +94,8 @@ export default function GaleriesAdminClient({ initialGaleries }: GaleriesAdminCl
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {galeries.length > 0 ? (
-          galeries.map(galerie => {
+          // CORRECTION 1 : Typage de galerie en explicit any
+          galeries.map((galerie: any) => {
             const photoCount = galerie.galerie_photos?.[0]?.count || 0;
             return (
               <div key={galerie.id} className="bg-white rounded-xl shadow-sm border border-[#E5E3DD] overflow-hidden flex flex-col transition-shadow hover:shadow-md">
@@ -177,7 +178,8 @@ export default function GaleriesAdminClient({ initialGaleries }: GaleriesAdminCl
               <textarea value={description} onChange={e => setDescription(e.target.value)} rows={3} className="w-full border border-[#E5E3DD] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#D4AF37] resize-none" />
             </div>
             <DialogFooter className="mt-6">
-              <DialogClose asChild>
+              {/* CORRECTION 2 : Retrait du asChild sur DialogClose */}
+              <DialogClose>
                 <Button variant="outline" type="button">Annuler</Button>
               </DialogClose>
               <Button type="submit" disabled={isCreating} className="bg-[#D4AF37] hover:bg-[#E8C84D] text-[#080808] font-bold">
@@ -196,7 +198,8 @@ export default function GaleriesAdminClient({ initialGaleries }: GaleriesAdminCl
           </DialogHeader>
           <div className="text-sm text-[#666666]">Toutes les photos associées seront également supprimées.</div>
           <DialogFooter>
-            <DialogClose asChild>
+            {/* CORRECTION 3 : Retrait du asChild sur DialogClose */}
+            <DialogClose>
               <Button variant="outline">Annuler</Button>
             </DialogClose>
             <Button onClick={handleDelete} className="bg-[#C4622D] hover:bg-red-700 text-white">Oui, supprimer</Button>

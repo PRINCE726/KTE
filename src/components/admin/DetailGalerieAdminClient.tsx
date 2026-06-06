@@ -11,7 +11,9 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { createBrowserClient } from "@supabase/ssr";
 
-
+// Note : Assure-toi que SortablePhoto est bien importé ou défini dans ton projet.
+// Si c'est un composant externe, l'import doit être présent.
+import SortablePhoto from "./SortablePhoto"; 
 
 interface Props {
   galerieId: string;
@@ -75,7 +77,8 @@ export default function DetailGalerieAdminClient({ galerieId, initialGalerie, in
         .select();
 
       if (!error && data) {
-        setPhotos((prev: any) => [...prev, ...data]);
+        // CORRECTION SYNTAXE PREV
+        setPhotos((prev: any[]) => [...prev, ...data]);
         toast({ title: `${data.length} photo(s) ajoutée(s)` });
       }
     }
@@ -92,7 +95,8 @@ export default function DetailGalerieAdminClient({ galerieId, initialGalerie, in
   const handleDragEnd = (event: any) => {
     const { active, over } = event;
     if (over && active.id !== over.id) {
-      setPhotos((items) => {
+      // CORRECTION SYNTAXE ITEMS / PREV
+      setPhotos((items: any[]) => {
         const oldIndex = items.findIndex(i => i.id === active.id);
         const newIndex = items.findIndex(i => i.id === over.id);
         return arrayMove(items, oldIndex, newIndex);
@@ -132,7 +136,8 @@ export default function DetailGalerieAdminClient({ galerieId, initialGalerie, in
   const deletePhoto = async (id: string) => {
     const { error } = await supabase.from("galerie_photos").delete().eq("id", id);
     if (!error) {
-      setPhotos((prev: any) => prev.filter(p => p.id !== id));
+      // CORRECTION SYNTAXE PREV
+      setPhotos((prev: any[]) => prev.filter(p => p.id !== id));
       toast({ title: "Photo supprimée" });
     }
   };
@@ -147,13 +152,15 @@ export default function DetailGalerieAdminClient({ galerieId, initialGalerie, in
   };
 
   const updateCaption = (id: string, legende: string) => {
-    setPhotos((prev: any) => prev.map(p => p.id === id ? { ...p, legende } : p));
+    // CORRECTION SYNTAXE PREV
+    setPhotos((prev: any[]) => prev.map((p: any) => p.id === id ? { ...p, legende } : p));
   };
 
   const togglePublish = async () => {
     const newStatus = !galerie.published;
     const { error } = await supabase.from("galeries").update({ published: newStatus }).eq("id", galerieId);
     if (!error) {
+      // CORRECTION SYNTAXE PREV
       setGalerie((prev: any) => ({ ...prev, published: newStatus }));
       toast({ title: newStatus ? "Galerie publiée" : "Galerie passée en brouillon" });
     }
@@ -227,7 +234,7 @@ export default function DetailGalerieAdminClient({ galerieId, initialGalerie, in
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
           <SortableContext items={photos.map(p => p.id)} strategy={rectSortingStrategy}>
-            {photos.map(photo => (
+            {photos.map((photo: any) => (
               <SortablePhoto 
                 key={photo.id} 
                 photo={photo} 
@@ -253,7 +260,8 @@ export default function DetailGalerieAdminClient({ galerieId, initialGalerie, in
           </DialogHeader>
           <div className="text-sm text-[#666666]">Cette action est irréversible. Toutes les images seront retirées.</div>
           <DialogFooter>
-            <DialogClose asChild>
+            {/* CORRECTION : Suppression de asChild sur DialogClose */}
+            <DialogClose>
               <Button variant="outline">Annuler</Button>
             </DialogClose>
             <Button onClick={deleteAllPhotos} className="bg-[#C4622D] hover:bg-red-700 text-white">Oui, tout supprimer</Button>

@@ -188,7 +188,7 @@ export default function GaleriePhotosAdmin({ params }: PageProps) {
   const deletePhoto = async (id: string) => {
     const { error } = await supabase.from("galerie_photos").delete().eq("id", id);
     if (!error) {
-      setPhotos(prev: any) => prev.filter(p => p.id !== id));
+setPhotos((prev: any) => prev.filter((p: any) => p.id !== id));
       toast({ title: "Photo supprimée", variant: "success" });
     }
   };
@@ -203,7 +203,7 @@ export default function GaleriePhotosAdmin({ params }: PageProps) {
   };
 
   const updateCaption = (id: string, legende: string) => {
-    setPhotos(prev: any) => prev.map(p => p.id === id ? { ...p, legende } : p));
+setPhotos((prev: any) => prev.map((p: any) => p.id === id ? { ...p, legende } : p));
   };
 
   const togglePublish = async () => {

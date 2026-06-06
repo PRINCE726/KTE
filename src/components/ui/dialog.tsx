@@ -49,13 +49,18 @@ export function DialogTrigger({
   const context = React.useContext(DialogContext);
   if (!context) throw new Error("DialogTrigger must be used within Dialog");
 
-  return React.cloneElement(children, {
-    onClick: (e: React.MouseEvent) => {
-      children.props.onClick?.(e);
-      context.setOpen(true);
-    },
-    className: cn(children.props.className, className),
-  });
+  if (React.isValidElement(children)) {
+    const childProps = children.props as any;
+    return React.cloneElement(children, {
+      onClick: (e: React.MouseEvent) => {
+        childProps.onClick?.(e);
+        context.setOpen(true);
+      },
+      className: cn(childProps.className, className),
+    } as any);
+  }
+
+  return children;
 }
 
 export function DialogPortal({ children }: { children: React.ReactNode }) {
@@ -150,7 +155,7 @@ export function DialogHeader({
   return (
     <div
       className={cn("flex flex-col space-y-1.5 text-center sm:text-left mb-4", className)}
-      {...props}
+      {...props} // FIX ICI
     />
   );
 }
@@ -162,7 +167,7 @@ export function DialogTitle({
   return (
     <h2
       className={cn("font-serif text-2xl font-bold leading-none tracking-tight text-[#1A1A1A]", className)}
-      {...props}
+      {...props} // FIX ICI
     />
   );
 }
@@ -174,12 +179,11 @@ export function DialogDescription({
   return (
     <p
       className={cn("text-sm text-[#666666] mt-1", className)}
-      {...props}
+      {...props} // FIX ICI
     />
   );
 }
 
-{/* AJOUT : Le composant DialogFooter qui manquait à l'appel */}
 export function DialogFooter({
   className,
   ...props
@@ -190,7 +194,7 @@ export function DialogFooter({
         "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 gap-2 mt-6",
         className
       )}
-      {...props}
+      {...props} // FIX ICI
     />
   );
 }
@@ -203,10 +207,15 @@ export function DialogClose({
   const context = React.useContext(DialogContext);
   if (!context) throw new Error("DialogClose must be used within Dialog");
 
-  return React.cloneElement(children, {
-    onClick: (e: React.MouseEvent) => {
-      children.props.onClick?.(e);
-      context.setOpen(false);
-    },
-  });
+  if (React.isValidElement(children)) {
+    const childProps = children.props as any;
+    return React.cloneElement(children, {
+      onClick: (e: React.MouseEvent) => {
+        childProps.onClick?.(e);
+        context.setOpen(false);
+      },
+    } as any);
+  }
+
+  return children;
 }

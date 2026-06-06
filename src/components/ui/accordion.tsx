@@ -9,7 +9,7 @@ interface AccordionProps {
   children: React.ReactNode;
   type?: "single" | "multiple";
   collapsible?: boolean;
-  defaultValue?: string;
+  defaultValue?: string | null; // CORRECTION 1 : Permettre explicitement la valeur null
 }
 
 const AccordionContext = React.createContext<{
@@ -17,6 +17,7 @@ const AccordionContext = React.createContext<{
   setActiveItem: (value: string | null) => void;
 } | null>(null);
 
+// CORRECTION 2 : L'assignation par défaut = null est désormais acceptée par TypeScript
 export function Accordion({ children, defaultValue = null }: AccordionProps) {
   const [activeItem, setActiveItem] = React.useState<string | null>(defaultValue);
 
