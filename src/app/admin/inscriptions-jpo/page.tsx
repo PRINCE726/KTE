@@ -45,7 +45,7 @@ export default function JPOAdmin() {
       .eq("id", confirmDialog.id);
 
     if (error) {
-      toast({ title: "Erreur", variant: "destructive" });
+      toast({ title: "Erreur", variant: "error" });
     } else {
       toast({ title: "Statut mis à jour" });
       setInscriptions(inscriptions.map(inc => inc.id === confirmDialog.id ? { ...inc, statut: confirmDialog.action } : inc));
@@ -216,7 +216,7 @@ export default function JPOAdmin() {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <DialogClose asChild>
+            <DialogClose>
               <Button variant="outline">Annuler</Button>
             </DialogClose>
             <Button 
