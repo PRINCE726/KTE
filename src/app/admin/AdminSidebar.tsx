@@ -5,8 +5,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { 
   LayoutDashboard, Ticket, Calendar, Bus, Mail, 
-  FileText, Image as ImageIcon, CalendarDays, Settings, LogOut, Menu, X 
+  FileText, Image as ImageIcon, CalendarDays, Settings, 
+  LogOut, Menu, X, Plus, Users, Briefcase, Camera 
 } from "lucide-react";
+import { useAdminTheme } from "@/components/admin/AdminThemeProvider";
 
 const NAV_GROUPS = [
   {
@@ -30,6 +32,9 @@ const NAV_GROUPS = [
       { label: "Articles", href: "/admin/articles", icon: FileText },
       { label: "Galeries", href: "/admin/galeries", icon: ImageIcon },
       { label: "Événements", href: "/admin/evenements", icon: CalendarDays },
+      { label: "Partenaires", href: "/admin/partenaires", icon: Users },
+      { label: "JPO Sessions", href: "/admin/jpo-sessions", icon: Briefcase },
+      { label: "Photos Caravane", href: "/admin/caravane-photos", icon: Camera },
     ]
   },
   {
@@ -43,6 +48,7 @@ const NAV_GROUPS = [
 export default function AdminSidebar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const { theme, toggleTheme } = useAdminTheme();
 
   const handleLogout = async () => {
     await fetch("/api/admin/logout", { method: "POST" });
@@ -52,26 +58,40 @@ export default function AdminSidebar() {
   const closeSidebar = () => setIsOpen(false);
 
   const SidebarContent = (
-    <div className="flex flex-col h-full bg-[#0F0F0F] text-[#F8F7F4] w-[260px] overflow-y-auto font-sans">
-      <div className="p-6 border-b border-[#222]">
-        <div className="flex items-center gap-3">
-          <div className="h-8 w-8 bg-[#D4AF37] rounded flex items-center justify-center font-serif font-black text-[#080808]">
+    <div className="flex flex-col h-full bg-[#111111] text-[#F5F5F5] w-full overflow-y-auto font-sans">
+      {/* Header */}
+      <div className="p-[20px_16px] flex items-center justify-between border-b border-[rgba(255,255,255,0.06)] shrink-0">
+        <div className="flex items-center gap-[10px]">
+          <div className="w-[32px] h-[32px] bg-[#C9A84C] rounded-[6px] flex items-center justify-center font-serif font-black text-[16px] text-[#0A0A0A]">
             K
           </div>
-          <div>
-            <h2 className="font-serif font-bold text-lg leading-tight tracking-wide text-[#F8F7F4]">Administration</h2>
-            <p className="text-[10px] text-[#1D9E75] font-semibold flex items-center gap-1 mt-0.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1D9E75] animate-pulse"></span>
-              Connecté
-            </p>
+          <div className="flex flex-col">
+            <span className="font-bold text-[14px] text-[#F5F5F5] leading-tight">Kimia Events</span>
+            <span className="text-[10px] text-[#666666] uppercase tracking-[0.1em] leading-none mt-0.5">Administration</span>
           </div>
         </div>
+        <div className="w-[8px] h-[8px] rounded-full bg-[#1D9E75] animate-pulse shrink-0" />
       </div>
 
-      <div className="flex-1 py-6 space-y-8">
+      {/* Button Nouveau */}
+      <div className="px-3 pt-4 shrink-0">
+        <Link 
+          href="/admin/articles/new"
+          onClick={closeSidebar}
+          className="flex items-center gap-[8px] p-[10px_16px] bg-[#1E1E1E] border border-[rgba(255,255,255,0.08)] rounded-[8px] hover:bg-[#252525] transition-colors group w-full"
+        >
+          <Plus className="w-[14px] h-[14px] text-[#C9A84C] shrink-0" />
+          <span className="font-sans font-light text-[13px] text-[#AAAAAA] group-hover:text-[#F5F5F5] transition-colors">
+            Création rapide
+          </span>
+        </Link>
+      </div>
+
+      {/* Navigation Groupée */}
+      <div className="flex-1 py-4 space-y-6">
         {NAV_GROUPS.map((group, idx) => (
-          <div key={idx} className="px-4">
-            <h3 className="text-[10px] font-bold text-[#666666] uppercase tracking-widest mb-3 px-2">
+          <div key={idx} className="px-3">
+            <h3 className="text-[10px] uppercase tracking-[0.15em] text-[#444444] font-bold px-3 mb-[6px] mt-[24px]">
               {group.title}
             </h3>
             <ul className="space-y-1">
@@ -83,14 +103,14 @@ export default function AdminSidebar() {
                     <Link
                       href={item.href}
                       onClick={closeSidebar}
-                      className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all ${
+                      className={`flex items-center gap-[10px] p-[9px_12px] rounded-[6px] text-[13px] font-sans transition-all duration-200 border-l-2 ${
                         isActive
-                          ? "bg-[#141414] text-[#D4AF37] border-l-2 border-[#D4AF37]"
-                          : "text-[#AAAAAA] hover:bg-[#141414] hover:text-[#F8F7F4] border-l-2 border-transparent"
+                          ? "bg-[#1A1A1A] text-[#C9A84C] border-l-[#C9A84C]"
+                          : "text-[#888888] hover:bg-[#1A1A1A] hover:text-[#F5F5F5] border-l-transparent"
                       }`}
                     >
-                      <Icon className="h-4 w-4" />
-                      <span className="font-medium">{item.label}</span>
+                      <Icon className="w-[15px] h-[15px] shrink-0" />
+                      <span>{item.label}</span>
                     </Link>
                   </li>
                 );
@@ -100,13 +120,40 @@ export default function AdminSidebar() {
         ))}
       </div>
 
-      <div className="p-4 border-t border-[#222]">
-        <button
-          onClick={handleLogout}
-          className="flex items-center gap-3 px-3 py-2.5 w-full text-left rounded-lg text-sm text-[#C4622D] hover:bg-[#C4622D]/10 transition-colors"
+      {/* Toggle Thème */}
+      <div className="p-[12px_16px] flex items-center justify-between border-t border-[rgba(255,255,255,0.06)] shrink-0">
+        <span className="font-sans font-light text-[12px] text-[#666666]">Thème sombre</span>
+        <div 
+          onClick={toggleTheme}
+          className={`w-[40px] h-[22px] rounded-full relative cursor-pointer transition-all duration-300 ${
+            theme === "dark" ? "bg-[#333333]" : "bg-[#C9A84C]"
+          }`}
         >
-          <LogOut className="h-4 w-4" />
-          <span className="font-medium">Déconnexion</span>
+          <div 
+            className={`w-[18px] h-[18px] bg-white rounded-full absolute top-[2px] transition-transform duration-300 ${
+              theme === "dark" ? "translate-x-[2px]" : "translate-x-[20px]"
+            }`}
+          />
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="border-t border-[rgba(255,255,255,0.06)] p-[16px] flex items-center justify-between shrink-0">
+        <div className="flex items-center gap-[10px]">
+          <div className="w-[32px] h-[32px] rounded-full bg-[#C9A84C] flex items-center justify-center font-bold text-[14px] text-[#0A0A0A] shrink-0">
+            A
+          </div>
+          <div className="flex flex-col">
+            <span className="text-[13px] font-medium text-[#F5F5F5] leading-tight">Admin KTE</span>
+            <span className="text-[11px] text-[#1D9E75] leading-none mt-0.5">Connecté</span>
+          </div>
+        </div>
+        <button 
+          onClick={handleLogout}
+          className="p-1 text-[#666666] hover:text-[#C4622D] transition-colors"
+          title="Déconnexion"
+        >
+          <LogOut className="w-[16px] h-[16px]" />
         </button>
       </div>
     </div>
@@ -117,13 +164,13 @@ export default function AdminSidebar() {
       {/* Mobile Hamburger */}
       <button
         onClick={() => setIsOpen(true)}
-        className="md:hidden fixed bottom-6 right-6 h-12 w-12 bg-[#0F0F0F] text-white rounded-full flex items-center justify-center shadow-xl z-40"
+        className="md:hidden fixed bottom-6 right-6 h-12 w-12 bg-[#111111] border border-[rgba(201,168,76,0.3)] text-white rounded-full flex items-center justify-center shadow-xl z-40 cursor-pointer"
       >
         <Menu className="h-5 w-5" />
       </button>
 
       {/* Desktop Sidebar */}
-      <aside className="hidden md:block shrink-0 sticky top-0 h-screen border-r border-[#E5E3DD]">
+      <aside className="hidden md:block shrink-0 sticky top-0 h-screen w-[240px] border-r border-[rgba(255,255,255,0.06)] bg-[#111111] z-30">
         {SidebarContent}
       </aside>
 
@@ -134,7 +181,7 @@ export default function AdminSidebar() {
           <div className="relative w-[260px] h-full shadow-2xl flex flex-col animate-in slide-in-from-left duration-300">
             <button
               onClick={closeSidebar}
-              className="absolute top-4 -right-12 h-10 w-10 bg-[#0F0F0F] text-white flex items-center justify-center rounded-r-xl"
+              className="absolute top-4 -right-12 h-10 w-10 bg-[#111111] border-r border-t border-b border-[rgba(255,255,255,0.06)] text-white flex items-center justify-center rounded-r-xl cursor-pointer"
             >
               <X className="h-5 w-5" />
             </button>

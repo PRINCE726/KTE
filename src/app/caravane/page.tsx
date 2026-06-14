@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from 'next/image';
 import { Bus, MapPin, Check, BookOpen, GraduationCap, Calendar, Phone, Mail, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -153,24 +154,35 @@ export default function CaravanePage() {
         <section className="w-full py-20 bg-[#0F0F0F] relative border-t border-border/10">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-              {/* Left Column - Team photo placeholder */}
-              <div className="lg:col-span-5 relative flex justify-center">
-                <div className="relative w-full max-w-sm aspect-[4/3] rounded-2xl overflow-hidden border border-border/20 shadow-2xl bg-zinc-900 p-8">
-                  <div className="absolute top-2 left-2 text-xs font-mono text-primary/40">KTE_MOBILE_UNIT</div>
-                  <div className="absolute -bottom-2 -right-2 text-[#1D9E75]/20">
-                    <Bus className="h-36 w-36" />
-                  </div>
-                  <div className="w-full h-full flex flex-col justify-center items-center text-center space-y-2">
-                    <GraduationCap className="h-12 w-12 text-primary" />
-                    <span className="font-serif text-lg font-bold">Un Accompagnement Mobile</span>
-                    <span className="text-xs text-muted-foreground">Conseils gratuits, brochures spécialisées et tests d'orientation sur place.</span>
-                  </div>
+              {/* Left Column - Team photo */}
+<div className="lg:col-span-5 relative flex justify-center">
+  <div className="relative w-full max-w-sm aspect-[4/3] rounded-2xl overflow-hidden border border-border/20 shadow-2xl bg-zinc-900">
+    
+    {/* Utilisation correcte du composant Image de Next.js */}
+    <Image 
+      src="/images/caravane/caravane-groupe-lycee.webp" 
+      alt="Groupe d'élèves devant la Caravane KTE"
+      fill 
+      className="object-cover"
+    />
 
-                  {/* Gold corner accents */}
-                  <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary" />
-                  <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary" />
-                </div>
-              </div>
+    {/* Icône Bus en superposition */}
+    <div className="absolute -bottom-2 -right-2 text-[#1D9E75]/20 z-10">
+      <Bus className="h-36 w-36" />
+    </div>
+
+    {/* Texte en superposition (si vous voulez garder le texte par-dessus l'image) */}
+    <div className="absolute inset-0 z-20 flex flex-col justify-center items-center text-center space-y-2 bg-black/40 p-8">
+      <GraduationCap className="h-12 w-12 text-primary" />
+      <span className="font-serif text-lg font-bold text-white">Un Accompagnement Mobile</span>
+      <span className="text-xs text-white/80">Conseils gratuits, brochures spécialisées et tests d'orientation sur place.</span>
+    </div>
+
+    {/* Gold corner accents */}
+    <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary z-30" />
+    <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary z-30" />
+  </div>
+</div>
 
               {/* Right Column */}
               <div className="lg:col-span-7 flex flex-col space-y-6">

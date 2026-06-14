@@ -33,19 +33,19 @@ export default async function ListeGaleriesAdminPage() {
 
   return (
     <div className="p-6 space-y-6 max-w-7xl mx-auto">
-      <div className="flex justify-between items-center border-b border-[#E5E3DD] pb-4">
+      <div className="flex justify-between items-center border-b border-[rgba(255,255,255,0.08)] pb-4">
         <div>
-          <h1 className="font-serif text-3xl font-bold text-[#1A1A1A]">Gestion des Galeries</h1>
-          <p className="text-sm text-[#666666]">Sélectionnez une galerie pour gérer ses photos</p>
+          <h1 className="font-sans text-3xl font-bold text-[#F5F5F5]">Gestion des Galeries</h1>
+          <p className="text-sm text-[#888888]">Sélectionnez une galerie pour gérer ses photos</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {galeries?.map((galerie) => (
-          <div key={galerie.id} className="border border-[#E5E3DD] p-5 rounded-xl bg-white shadow-sm flex flex-col justify-between">
+          <div key={galerie.id} className="border border-[rgba(255,255,255,0.08)] p-5 rounded-xl bg-[#161616] flex flex-col justify-between">
             <div>
-              <h2 className="font-serif text-xl font-bold text-[#1A1A1A] mb-1">{galerie.titre}</h2>
-              <p className="text-xs text-[#666666] mb-4">Édition : {galerie.edition}</p>
+              <h2 className="font-sans text-xl font-bold text-[#F5F5F5] mb-1">{galerie.titre}</h2>
+              <p className="text-xs text-[#888888] mb-4">Édition : {galerie.edition}</p>
             </div>
             <Link 
               href={`/admin/galeries/${galerie.id}`} 
@@ -58,7 +58,7 @@ export default async function ListeGaleriesAdminPage() {
       </div>
 
       {galeries?.length === 0 && (
-        <div className="text-center py-12 text-[#666666] border border-dashed border-[#E5E3DD] rounded-xl bg-white">
+        <div className="text-center py-12 text-[#888888] border border-dashed border-[rgba(255,255,255,0.08)] rounded-xl bg-[#161616]">
           Aucune galerie disponible.
         </div>
       )}

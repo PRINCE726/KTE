@@ -24,8 +24,8 @@ function SortablePhoto({ photo, onDelete, onUpdateCaption }: any) {
   };
 
   return (
-    <div ref={setNodeRef} style={style} className="relative group bg-white rounded-lg border border-[#E5E3DD] overflow-hidden shadow-sm flex flex-col">
-      <div className="aspect-square relative overflow-hidden bg-gray-100">
+    <div ref={setNodeRef} style={style} className="relative group bg-[#161616] rounded-lg border border-[rgba(255,255,255,0.08)] overflow-hidden flex flex-col">
+      <div className="aspect-square relative overflow-hidden bg-[#0F0F0F]">
         <img src={photo.image_url} alt="Photo" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-between p-2">
           <div className="flex justify-between items-start">
@@ -44,7 +44,7 @@ function SortablePhoto({ photo, onDelete, onUpdateCaption }: any) {
           value={photo.caption || ""}
           onChange={(e) => onUpdateCaption(photo.id, e.target.value)}
           placeholder="Légende (optionnel)" 
-          className="w-full text-xs text-[#666666] bg-transparent border-b border-transparent focus:border-[#E5E3DD] focus:outline-none placeholder:text-[#AAAAAA]"
+          className="w-full text-xs text-[#888888] bg-transparent border-b border-transparent focus:border-[#C9A84C] focus:outline-none placeholder:text-[#555555]"
         />
       </div>
     </div>
@@ -216,25 +216,25 @@ setPhotos((prev: any) => prev.map((p: any) => p.id === id ? { ...p, legende } : 
     }
   };
 
-  if (isLoading) return <div className="text-center py-12">Chargement...</div>;
-  if (!galerie) return <div className="text-center py-12">Galerie introuvable.</div>;
+  if (isLoading) return <div className="text-center py-12 text-[#888888]">Chargement...</div>;
+  if (!galerie) return <div className="text-center py-12 text-[#888888]">Galerie introuvable.</div>;
 
   return (
     <div className="space-y-6 pb-20 max-w-7xl mx-auto p-4">
-      <Link href="/admin/galeries" className="inline-flex items-center text-sm text-[#666666] hover:text-[#1A1A1A] transition-colors">
+      <Link href="/admin/galeries" className="inline-flex items-center text-sm text-[#888888] hover:text-[#F5F5F5] transition-colors">
         <ArrowLeft className="h-4 w-4 mr-1" /> Retour aux galeries
       </Link>
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-serif text-2xl md:text-3xl font-bold text-[#1A1A1A]">{galerie.titre}</h1>
-          <p className="text-sm text-[#666666] mt-1">Édition {galerie.edition} • {photos.length} photos</p>
+          <h1 className="font-sans text-2xl md:text-3xl font-bold text-[#F5F5F5]">{galerie.titre}</h1>
+          <p className="text-sm text-[#888888] mt-1">Édition {galerie.edition} • {photos.length} photos</p>
         </div>
         <div className="flex items-center gap-3">
           <button
             onClick={togglePublish}
-            className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors shadow-sm ${
-              galerie.published ? "bg-gray-100 text-[#1A1A1A] hover:bg-gray-200" : "bg-[#1D9E75] text-white hover:bg-green-700"
+            className={`px-4 py-2 rounded-lg text-sm font-bold transition-all border border-[rgba(255,255,255,0.1)] cursor-pointer ${
+              galerie.published ? "bg-[#1A1A1A] text-[#F5F5F5] hover:bg-[#252525]" : "bg-[#1D9E75] text-white hover:bg-green-700"
             }`}
           >
             {galerie.published ? "Passer en brouillon" : "Publier la galerie"}
@@ -242,30 +242,30 @@ setPhotos((prev: any) => prev.map((p: any) => p.id === id ? { ...p, legende } : 
           <button 
             onClick={saveOrderAndCaptions}
             disabled={isSaving || photos.length === 0}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#D4AF37] text-[#080808] rounded-lg text-sm font-bold hover:bg-[#E8C84D] transition-colors shadow-sm disabled:opacity-50"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#D4AF37] text-[#080808] rounded-lg text-sm font-bold hover:bg-[#E8C84D] transition-colors shadow-sm disabled:opacity-50 cursor-pointer"
           >
             <Save className="h-4 w-4" /> {isSaving ? "Sauvegarde..." : "Sauvegarder les modifications"}
           </button>
         </div>
       </div>
 
-      <div {...getRootProps()} className={`border-2 border-dashed rounded-xl p-10 flex flex-col items-center justify-center cursor-pointer transition-colors ${isDragActive ? "border-[#D4AF37] bg-[#D4AF37]/5" : "border-[#E5E3DD] bg-white hover:bg-[#F8F7F4]"}`}>
+      <div {...getRootProps()} className={`border-2 border-dashed rounded-xl p-10 flex flex-col items-center justify-center cursor-pointer transition-colors ${isDragActive ? "border-[#D4AF37] bg-[#D4AF37]/5" : "border-[rgba(255,255,255,0.1)] hover:border-[#C9A84C] bg-[#111111] hover:bg-[#1A1A1A]"}`}>
         <input {...getInputProps()} />
-        <UploadCloud className={`h-12 w-12 mb-4 ${isDragActive ? "text-[#D4AF37]" : "text-[#AAAAAA]"}`} />
+        <UploadCloud className={`h-12 w-12 mb-4 ${isDragActive ? "text-[#D4AF37]" : "text-[#555555]"}`} />
         {isUploading ? (
-          <p className="text-sm font-bold text-[#1A1A1A] animate-pulse">Téléchargement en cours...</p>
+          <p className="text-sm font-bold text-[#F5F5F5] animate-pulse">Téléchargement en cours...</p>
         ) : (
           <>
-            <p className="text-sm font-bold text-[#1A1A1A] mb-1">Glissez vos photos ici</p>
-            <p className="text-xs text-[#666666]">ou cliquez pour sélectionner (JPG, PNG, WebP)</p>
+            <p className="text-sm font-bold text-[#F5F5F5] mb-1">Glissez vos photos ici</p>
+            <p className="text-xs text-[#888888]">ou cliquez pour sélectionner (JPG, PNG, WebP)</p>
           </>
         )}
       </div>
 
       {photos.length > 0 && (
-        <div className="flex items-center justify-between bg-white p-3 rounded-lg border border-[#E5E3DD] shadow-sm">
-          <p className="text-xs text-[#666666] font-medium px-2">Glissez-déposez pour réorganiser. La première image sera la couverture.</p>
-          <button onClick={() => setDeleteAllDialog(true)} className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-[#C4622D] hover:bg-[#C4622D]/10 rounded transition-colors">
+        <div className="flex items-center justify-between bg-[#161616] p-3 rounded-lg border border-[rgba(255,255,255,0.08)]">
+          <p className="text-xs text-[#888888] font-medium px-2">Glissez-déposez pour réorganiser. La première image sera la couverture.</p>
+          <button onClick={() => setDeleteAllDialog(true)} className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-[#C4622D] hover:bg-[#C4622D]/10 rounded transition-colors cursor-pointer">
             <Trash2 className="h-3.5 w-3.5" /> Supprimer toutes
           </button>
         </div>
@@ -282,15 +282,15 @@ setPhotos((prev: any) => prev.map((p: any) => p.id === id ? { ...p, legende } : 
       </DndContext>
 
       {photos.length === 0 && !isUploading && (
-        <div className="text-center py-12 text-[#666666] border border-dashed border-[#E5E3DD] rounded-xl">Aucune photo dans cette galerie.</div>
+        <div className="text-center py-12 text-[#888888] border border-dashed border-[rgba(255,255,255,0.08)] bg-[#161616] rounded-xl">Aucune photo dans cette galerie.</div>
       )}
 
       <Dialog open={deleteAllDialog} onOpenChange={setDeleteAllDialog}>
-        <DialogContent className="bg-white text-[#1A1A1A] border-[#E5E3DD]">
-          <DialogHeader><DialogTitle>Supprimer toutes les photos ?</DialogTitle></DialogHeader>
-          <div className="text-sm text-[#666666]">Cette action est irréversible. Toutes les images seront retirées.</div>
+        <DialogContent className="bg-[#161616] text-[#F5F5F5] border-[rgba(255,255,255,0.1)]">
+          <DialogHeader><DialogTitle className="text-[#F5F5F5]">Supprimer toutes les photos ?</DialogTitle></DialogHeader>
+          <div className="text-sm text-[#888888]">Cette action est irréversible. Toutes les images seront retirées.</div>
           <DialogFooter>
-            <DialogClose><Button variant="outline">Annuler</Button></DialogClose>
+            <DialogClose><Button variant="outline" className="bg-transparent border-[rgba(255,255,255,0.15)] text-[#AAAAAA] hover:bg-[#1E1E1E] hover:text-[#F5F5F5]">Annuler</Button></DialogClose>
             <Button onClick={deleteAllPhotos} className="bg-[#C4622D] hover:bg-red-700 text-white">Oui, tout supprimer</Button>
           </DialogFooter>
         </DialogContent>

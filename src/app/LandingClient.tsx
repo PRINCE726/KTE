@@ -19,22 +19,16 @@ import Footer from "@/components/Footer";
 
 // Partners List
 const partnersList = [
-  "Prescom Media",
-  "Dametis",
-  "AGL Africa Global Logistics",
-  "Edutech Congo",
-  "C2 Business Campus",
-  "Twins Events",
-  "Journal Fondation",
-  "Ordre des Avocats du Congo",
-  "A3 Services",
-  "NTI Media",
-  "FEC",
-  "AFI-L'UE Business School",
-  "Banque Postale du Congo",
-  "Vival",
-  "Women in Logistics Africa",
-  "Africa Campus"
+  { name:"BPC", logo:"/images/partenaires/bpc-logo.png"},
+  { name:"NTI", logo:"/images/partenaires/nti-logo.png"},
+  { name:"Prescom", logo:"/images/partenaires/Prescom-logo.png"},
+  { name:"Vival", logo:"/images/partenaires/vival-logo.png"},
+  { name:"AGL", logo:"/images/partenaires/agl-logo.svg"},
+  { name:"AFI", logo:"/images/partenaires/AFI-logo.png"}
+
+
+
+
 ];
 
 // 10 Gala Photos
@@ -115,7 +109,7 @@ export default function LandingClient({ initialGalaPhotos }: { initialGalaPhotos
           date: "04 Avr 2026",
           categorie: "Partenariats",
           extrait: "La Fondation Horizon s'allie avec Kimia Events Team pour financer 10 bourses d'études complètes pour l'année universitaire 2026-2027.",
-          image_url: "/images/gala/gala-salle-diner-1.webp",
+          image_url: "/images/Actualites/paternariat.jpg",
           slug: "partenariat-fondation-horizon-kte"
         },
         {
@@ -202,24 +196,111 @@ export default function LandingClient({ initialGalaPhotos }: { initialGalaPhotos
             </div>
           </div>
         </section>
+{/* SECTION 3 — QUI SOMMES-NOUS */}
+<section id="agence" className="w-full py-12 md:py-20 bg-[#0A0A0A] border-t border-[#C9A84C]">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+    
+    {/* En-tête de section */}
+    <div className="text-center mb-12">
+      <p className="text-[16px] font-sans font-light uppercase tracking-[0.2em] text-[#C9A84C] mb-4">
+        QUI SOMMES-NOUS
+      </p>
+      <div className="max-w-[680px] mx-auto">
+        <h2 className="font-serif italic text-[18px] md:text-[22px] text-[#F5F0E8] font-normal leading-relaxed">
+          Kimia Events Team c'est une agence événementielle qui croit que chaque bachelier mérite un accompagnement sérieux.
+        </h2>
+        <p className="font-sans font-light text-[13px] text-[#F5F0E8]/70 mt-4 leading-relaxed">
+          On organise des événements, on va dans les lycées, on connecte les jeunes aux bonnes personnes.
+        </p>
+      </div>
+    </div>
 
-        {/* SECTION 3 — QUI SOMMES-NOUS */}
-        <section id="agence" className="w-full py-12 md:py-20 bg-[#0A0A0A] border-t border-[#C9A84C]">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 text-center">
-            <p className="text-[16px] font-sans font-light uppercase tracking-[0.2em] text-[#C9A84C] mb-8">
-              QUI SOMMES-NOUS
-            </p>
-            <div className="max-w-[680px]">
-              <h2 className="font-serif italic text-[13px] md:text-[22px] text-[#F5F0E8] font-normal leading-relaxed">
-                Kimia Events Team c'est une agence evenmentielle qui croient que chaque bachelier mérite un accompagnement sérieux.
-              </h2>
-              <p className="font-sans font-light text-[13px] text-[#F5F0E8]/70 mt-4 leading-relaxed">
-                On organise des événements, on va dans les lycées, on connecte les jeunes aux bonnes personnes.
-              </p>
-            </div>
+    {/* LES TROIS CARDS SUR LA MÊME LIGNE SANS DÉFILEMENT (MOBILE ET DESKTOP) */}
+    <div className="grid grid-cols-3 gap-2 md:gap-6 mt-12 w-full items-stretch">
+      
+      {/* CARTE 1 — Organisation */}
+      <div className="group relative overflow-hidden bg-[#0d0d0e] p-4 md:p-8 rounded-xl md:rounded-2xl border border-zinc-900 hover:border-[#C9A84C]/40 transition-all duration-300 flex flex-col justify-between min-h-[220px] md:min-h-[260px]">
+        {/* Lueur dorée en arrière-plan au survol */}
+        <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#C9A84C]/5 blur-[50px] group-hover:bg-[#C9A84C]/10 transition-all duration-300 pointer-events-none" />
+        
+        <div>
+          <div className="text-[#C9A84C] mb-4 md:mb-6 inline-block p-2 md:p-3 rounded-lg md:rounded-xl bg-[#C9A84C]/5 border border-[#C9A84C]/10">
+            <svg width="18" height="18" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
           </div>
-        </section>
+          <h3 className="font-sans font-medium text-[11px] md:text-[14px] uppercase tracking-[0.05em] md:tracking-[0.15em] text-[#C9A84C] mb-2 leading-tight">
+            Organisation
+          </h3>
+          <p className="font-sans font-light text-[10px] md:text-[13px] text-[#F5F0E8]/80 leading-snug md:leading-relaxed">
+            Gestion complète de A à Z pour des événements marquants.
+          </p>
+        </div>
+        
+        <div className="text-[8px] md:text-[10px] text-zinc-600 font-mono mt-4 md:mt-6 pt-2 md:pt-4 border-t border-zinc-900/50 tracking-wider uppercase">
+          Clé en main
+        </div>
+      </div>
 
+      {/* CARTE 2 — Hôtesses */}
+      <div className="group relative overflow-hidden bg-[#0d0d0e] p-4 md:p-8 rounded-xl md:rounded-2xl border border-zinc-900 hover:border-[#C9A84C]/40 transition-all duration-300 flex flex-col justify-between min-h-[220px] md:min-h-[260px]">
+        {/* Lueur dorée en arrière-plan au survol */}
+        <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#C9A84C]/5 blur-[50px] group-hover:bg-[#C9A84C]/10 transition-all duration-300 pointer-events-none" />
+        
+        <div>
+          <div className="text-[#C9A84C] mb-4 md:mb-6 inline-block p-2 md:p-3 rounded-lg md:rounded-xl bg-[#C9A84C]/5 border border-[#C9A84C]/10">
+            <svg width="18" height="18" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3 className="font-sans font-medium text-[11px] md:text-[14px] uppercase tracking-[0.05em] md:tracking-[0.15em] text-[#C9A84C] mb-2 leading-tight">
+            Hôtesses
+          </h3>
+          <p className="font-sans font-light text-[10px] md:text-[13px] text-[#F5F0E8]/80 leading-snug md:leading-relaxed">
+            Un accueil chaleureux et élégant pour honorer vos invités.
+          </p>
+        </div>
+        
+        <div className="text-[8px] md:text-[10px] text-zinc-600 font-mono mt-4 md:mt-6 pt-2 md:pt-4 border-t border-zinc-900/50 tracking-wider uppercase flex items-center justify-between">
+          <span>Prestation</span>
+          <span className="hidden md:block opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 text-[#C9A84C]">→</span>
+        </div>
+      </div>
+
+      {/* CARTE 3 — Gestion de projets */}
+      <div className="group relative overflow-hidden bg-[#0d0d0e] p-4 md:p-8 rounded-xl md:rounded-2xl border border-zinc-900 hover:border-[#C9A84C]/40 transition-all duration-300 flex flex-col justify-between min-h-[220px] md:min-h-[260px]">
+        {/* Lueur dorée en arrière-plan au survol */}
+        <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#C9A84C]/5 blur-[50px] group-hover:bg-[#C9A84C]/10 transition-all duration-300 pointer-events-none" />
+        
+        <div>
+          <div className="text-[#C9A84C] mb-4 md:mb-6 inline-block p-2 md:p-3 rounded-lg md:rounded-xl bg-[#C9A84C]/5 border border-[#C9A84C]/10">
+            <svg width="18" height="18" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3 className="font-sans font-medium text-[11px] md:text-[14px] uppercase tracking-[0.05em] md:tracking-[0.15em] text-[#C9A84C] mb-2 leading-tight">
+            Projets
+          </h3>
+          <p className="font-sans font-light text-[10px] md:text-[13px] text-[#F5F0E8]/80 leading-snug md:leading-relaxed">
+            Planification rigoureuse et suivi stratégique de vos buts.
+          </p>
+        </div>
+        
+        <div className="text-[8px] md:text-[10px] text-zinc-600 font-mono mt-4 md:mt-6 pt-2 md:pt-4 border-t border-zinc-900/50 tracking-wider uppercase">
+          Suivi
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
         {/* SECTION 4 — GALA DES BACHELIERS 2026 */}
         <section id="gala" className="w-full py-12 md:py-20 bg-[#0A0A0A]">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -369,197 +450,100 @@ export default function LandingClient({ initialGalaPhotos }: { initialGalaPhotos
         </section>
 
         {/* SECTION 7 — JPO & MÉTIERS 2026 */}
-        <section id="jpo" className="w-full py-12 md:py-20 bg-[#0A0A0A]">
-          <div className="max-w-7xl mx-auto px-6 md:px-8">
-            {/* Header */}
-            <div className="mb-12">
-              <div className="text-xs uppercase tracking-[0.15em] text-[#C9A84C] font-semibold mb-3">
-                JPO & MÉTIERS
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#F5F0E8] mb-4">
-                Viens découvrir les métiers qui recrutent.
-              </h2>
-              <p className="text-sm sm:text-base text-[#F5F0E8]/70 max-w-xl font-light leading-relaxed mb-2">
-                Pose tes questions à des professionnels en face à face.
-              </p>
-              <p className="text-[14px] font-sans font-light text-[#C9A84C]">
-                Socoprise Business Campus — 05 328 71 81
-              </p>
-            </div>
+<section id="jpo" className="w-full py-12 md:py-20 bg-[#0A0A0A]">
+  <div className="max-w-7xl mx-auto px-6 md:px-8">
+    {/* Header */}
+    <div className="mb-12">
+      <div className="text-xs uppercase tracking-[0.15em] text-[#C9A84C] font-semibold mb-3">
+        JPO & MÉTIERS
+      </div>
+      <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#F5F0E8] mb-4">
+        Viens découvrir les métiers qui recrutent.
+      </h2>
+      <p className="text-sm sm:text-base text-[#F5F0E8]/70 max-w-xl font-light leading-relaxed mb-2">
+        Pose tes questions à des professionnels en face à face.
+      </p>
+      <p className="text-[14px] font-sans font-light text-[#C9A84C]">
+        Socoprise Business Campus — 05 328 71 81
+      </p>
+    </div>
 
-            {/* 5 Stacked Vertical Cards */}
-            <div className="flex flex-col gap-[4px] w-full">
-              
-              {/* Card 1 */}
-              <div className="relative w-full h-[220px] md:h-[280px] overflow-hidden bg-[#141414]">
-                <Image 
-                  src="/images/caravane/caravane-equipe-terrain.webp" 
-                  alt="Logistique" 
-                  fill 
-                  className="grayscale-[30%] brightness-[0.5] object-cover rounded-none" 
-                />
-                <div className="absolute inset-0 bg-[#0A0A0A]/70 z-10" />
+    {/* 5 Stacked Vertical Cards */}
+    <div className="flex flex-col gap-[4px] w-full">
+      
+      {/* Card 1 */}
+      <div className="relative w-full h-[220px] md:h-[280px] overflow-hidden bg-[#141414]">
+        <Image src="/images/jpo/jpo-logistique.jpg" alt="Logistique" fill className="grayscale-[30%] brightness-[0.8] object-cover rounded-none" />
+        <div className="absolute inset-0 bg-[#0A0A0A]/40 z-10" />
+        <div className="absolute top-6 left-6 z-20">
+          <svg className="w-8 h-8 text-[#C9A84C]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10h10zm0 0h5l4-4v-4h-9v8z" /></svg>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20 flex flex-col items-start">
+          <div className="font-sans text-[12px] tracking-[0.15em] text-[#C9A84C] uppercase">10 JUIN 2026 — 9H</div>
+          <h3 className="font-serif text-[20px] md:text-[28px] font-bold text-[#F5F0E8] mt-1 leading-tight">Métiers de la Logistique</h3>
+          <Link href="/jpo"><span className="inline-block bg-[#C9A84C] text-[#0A0A0A] text-xs font-semibold py-2.5 px-6 rounded-full hover:bg-transparent hover:border-[#C9A84C] hover:text-[#C9A84C] border border-transparent transition-all duration-300 mt-3 cursor-pointer">S'inscrire à la session</span></Link>
+        </div>
+      </div>
 
-                {/* Top Left Icon */}
-                <div className="absolute top-6 left-6 z-20">
-                  <svg className="w-8 h-8 text-[#C9A84C]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10h10zm0 0h5l4-4v-4h-9v8z" />
-                  </svg>
-                </div>
+      {/* Card 2 */}
+      <div className="relative w-full h-[220px] md:h-[280px] overflow-hidden bg-[#141414]">
+        <Image src="/images/jpo/jpo-gestion.jpg" alt="Gestion, Management & Droit" fill className="grayscale-[30%] brightness-[0.8] object-cover rounded-none" />
+        <div className="absolute inset-0 bg-[#0A0A0A]/40 z-10" />
+        <div className="absolute top-6 left-6 z-20">
+          <svg className="w-8 h-8 text-[#C9A84C]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17M3 7h18M6 7l3 6h-6l3-6zm12 0l3 6h-6l3-6z" /></svg>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20 flex flex-col items-start">
+          <div className="font-sans text-[12px] tracking-[0.15em] text-[#C9A84C] uppercase">16 JUIN 2026 — 9H</div>
+          <h3 className="font-serif text-[20px] md:text-[28px] font-bold text-[#F5F0E8] mt-1 leading-tight">Gestion, Management & Droit</h3>
+          <Link href="/jpo"><span className="inline-block bg-[#C9A84C] text-[#0A0A0A] text-xs font-semibold py-2.5 px-6 rounded-full hover:bg-transparent hover:border-[#C9A84C] hover:text-[#C9A84C] border border-transparent transition-all duration-300 mt-3 cursor-pointer">S'inscrire à la session</span></Link>
+        </div>
+      </div>
 
-                {/* Bottom Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20 flex flex-col items-start">
-                  <div className="font-sans text-[12px] tracking-[0.15em] text-[#C9A84C] uppercase">
-                    10 JUIN 2026 — 9H
-                  </div>
-                  <h3 className="font-serif text-[20px] md:text-[28px] font-bold text-[#F5F0E8] mt-1 leading-tight">
-                    Métiers de la Logistique
-                  </h3>
-                  <Link href="/jpo">
-                    <span className="inline-block bg-[#C9A84C] text-[#0A0A0A] text-xs font-semibold py-2.5 px-6 rounded-full hover:bg-transparent hover:border-[#C9A84C] hover:text-[#C9A84C] border border-transparent transition-all duration-300 mt-3 cursor-pointer">
-                      S'inscrire à la session
-                    </span>
-                  </Link>
-                </div>
-              </div>
+      {/* Card 3 */}
+      <div className="relative w-full h-[220px] md:h-[280px] overflow-hidden bg-[#141414]">
+        <Image src="/images/jpo/jpo-sante.jpg" alt="Santé" fill className="grayscale-[30%] brightness-[0.8] object-cover rounded-none" />
+        <div className="absolute inset-0 bg-[#0A0A0A]/40 z-10" />
+        <div className="absolute top-6 left-6 z-20">
+          <svg className="w-8 h-8 text-[#C9A84C]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20 flex flex-col items-start">
+          <div className="font-sans text-[12px] tracking-[0.15em] text-[#C9A84C] uppercase">20 JUIN 2026 — 9H</div>
+          <h3 className="font-serif text-[20px] md:text-[28px] font-bold text-[#F5F0E8] mt-1 leading-tight">Métiers de la Santé</h3>
+          <Link href="/jpo"><span className="inline-block bg-[#C9A84C] text-[#0A0A0A] text-xs font-semibold py-2.5 px-6 rounded-full hover:bg-transparent hover:border-[#C9A84C] hover:text-[#C9A84C] border border-transparent transition-all duration-300 mt-3 cursor-pointer">S'inscrire à la session</span></Link>
+        </div>
+      </div>
 
-              {/* Card 2 */}
-              <div className="relative w-full h-[220px] md:h-[280px] overflow-hidden bg-[#141414]">
-                <Image 
-                  src="/images/gala/gala-networking.webp" 
-                  alt="Gestion, Management & Droit" 
-                  fill 
-                  className="grayscale-[30%] brightness-[0.5] object-cover rounded-none" 
-                />
-                <div className="absolute inset-0 bg-[#0A0A0A]/70 z-10" />
+      {/* Card 4 */}
+      <div className="relative w-full h-[220px] md:h-[280px] overflow-hidden bg-[#141414]">
+        <Image src="/images/jpo/jpo-education.jpg" alt="Education" fill className="grayscale-[30%] brightness-[0.8] object-cover rounded-none" />
+        <div className="absolute inset-0 bg-[#0A0A0A]/40 z-10" />
+        <div className="absolute top-6 left-6 z-20">
+          <svg className="w-8 h-8 text-[#C9A84C]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6a2 2 0 004 0v-6M3 9v6a1 1 0 001 1h2" /></svg>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20 flex flex-col items-start">
+          <div className="font-sans text-[12px] tracking-[0.15em] text-[#C9A84C] uppercase">23 JUIN 2026 — 9H</div>
+          <h3 className="font-serif text-[20px] md:text-[28px] font-bold text-[#F5F0E8] mt-1 leading-tight">Culturel, Social & Éducation</h3>
+          <Link href="/jpo"><span className="inline-block bg-[#C9A84C] text-[#0A0A0A] text-xs font-semibold py-2.5 px-6 rounded-full hover:bg-transparent hover:border-[#C9A84C] hover:text-[#C9A84C] border border-transparent transition-all duration-300 mt-3 cursor-pointer">S'inscrire à la session</span></Link>
+        </div>
+      </div>
 
-                {/* Top Left Icon */}
-                <div className="absolute top-6 left-6 z-20">
-                  <svg className="w-8 h-8 text-[#C9A84C]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17M3 7h18M6 7l3 6h-6l3-6zm12 0l3 6h-6l3-6z" />
-                  </svg>
-                </div>
+      {/* Card 5 */}
+      <div className="relative w-full h-[220px] md:h-[280px] overflow-hidden bg-[#141414]">
+        <Image src="/images/jpo/jpo-industrie.jpg" alt="Industrie & Technologies" fill className="grayscale-[30%] brightness-[0.8] object-cover rounded-none" />
+        <div className="absolute inset-0 bg-[#0A0A0A]/40 z-10" />
+        <div className="absolute top-6 left-6 z-20">
+          <svg className="w-8 h-8 text-[#C9A84C]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20 flex flex-col items-start">
+          <div className="font-sans text-[12px] tracking-[0.15em] text-[#C9A84C] uppercase">26 JUIN 2026 — 9H</div>
+          <h3 className="font-serif text-[20px] md:text-[28px] font-bold text-[#F5F0E8] mt-1 leading-tight">Industrie & Technologies</h3>
+          <Link href="/jpo"><span className="inline-block bg-[#C9A84C] text-[#0A0A0A] text-xs font-semibold py-2.5 px-6 rounded-full hover:bg-transparent hover:border-[#C9A84C] hover:text-[#C9A84C] border border-transparent transition-all duration-300 mt-3 cursor-pointer">S'inscrire à la session</span></Link>
+        </div>
+      </div>
 
-                {/* Bottom Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20 flex flex-col items-start">
-                  <div className="font-sans text-[12px] tracking-[0.15em] text-[#C9A84C] uppercase">
-                    16 JUIN 2026 — 9H
-                  </div>
-                  <h3 className="font-serif text-[20px] md:text-[28px] font-bold text-[#F5F0E8] mt-1 leading-tight">
-                    Gestion, Management & Droit
-                  </h3>
-                  <Link href="/jpo">
-                    <span className="inline-block bg-[#C9A84C] text-[#0A0A0A] text-xs font-semibold py-2.5 px-6 rounded-full hover:bg-transparent hover:border-[#C9A84C] hover:text-[#C9A84C] border border-transparent transition-all duration-300 mt-3 cursor-pointer">
-                      S'inscrire à la session
-                    </span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="relative w-full h-[220px] md:h-[280px] overflow-hidden bg-[#141414]">
-                <Image 
-                  src="/images/gala/gala-remise-bourse-2.webp" 
-                  alt="Santé" 
-                  fill 
-                  className="grayscale-[30%] brightness-[0.5] object-cover rounded-none" 
-                />
-                <div className="absolute inset-0 bg-[#0A0A0A]/70 z-10" />
-
-                {/* Top Left Icon */}
-                <div className="absolute top-6 left-6 z-20">
-                  <svg className="w-8 h-8 text-[#C9A84C]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
-                </div>
-
-                {/* Bottom Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20 flex flex-col items-start">
-                  <div className="font-sans text-[12px] tracking-[0.15em] text-[#C9A84C] uppercase">
-                    20 JUIN 2026 — 9H
-                  </div>
-                  <h3 className="font-serif text-[20px] md:text-[28px] font-bold text-[#F5F0E8] mt-1 leading-tight">
-                    Métiers de la Santé
-                  </h3>
-                  <Link href="/jpo">
-                    <span className="inline-block bg-[#C9A84C] text-[#0A0A0A] text-xs font-semibold py-2.5 px-6 rounded-full hover:bg-transparent hover:border-[#C9A84C] hover:text-[#C9A84C] border border-transparent transition-all duration-300 mt-3 cursor-pointer">
-                      S'inscrire à la session
-                    </span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Card 4 */}
-              <div className="relative w-full h-[220px] md:h-[280px] overflow-hidden bg-[#141414]">
-                <Image 
-                  src="/images/gala/gala-remise-bourse-1.webp" 
-                  alt="Education" 
-                  fill 
-                  className="grayscale-[30%] brightness-[0.5] object-cover rounded-none" 
-                />
-                <div className="absolute inset-0 bg-[#0A0A0A]/70 z-10" />
-
-                {/* Top Left Icon */}
-                <div className="absolute top-6 left-6 z-20">
-                  <svg className="w-8 h-8 text-[#C9A84C]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6a2 2 0 004 0v-6M3 9v6a1 1 0 001 1h2" />
-                  </svg>
-                </div>
-
-                {/* Bottom Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20 flex flex-col items-start">
-                  <div className="font-sans text-[12px] tracking-[0.15em] text-[#C9A84C] uppercase">
-                    23 JUIN 2026 — 9H
-                  </div>
-                  <h3 className="font-serif text-[20px] md:text-[28px] font-bold text-[#F5F0E8] mt-1 leading-tight">
-                    Culturel, Social & Éducation
-                  </h3>
-                  <Link href="/jpo">
-                    <span className="inline-block bg-[#C9A84C] text-[#0A0A0A] text-xs font-semibold py-2.5 px-6 rounded-full hover:bg-transparent hover:border-[#C9A84C] hover:text-[#C9A84C] border border-transparent transition-all duration-300 mt-3 cursor-pointer">
-                      S'inscrire à la session
-                    </span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Card 5 */}
-              <div className="relative w-full h-[220px] md:h-[280px] overflow-hidden bg-[#141414]">
-                <Image 
-                  src="/images/gala/gala-salle-diner-1.webp" 
-                  alt="Industrie & Technologies" 
-                  fill 
-                  className="grayscale-[30%] brightness-[0.5] object-cover rounded-none" 
-                />
-                <div className="absolute inset-0 bg-[#0A0A0A]/70 z-10" />
-
-                {/* Top Left Icon */}
-                <div className="absolute top-6 left-6 z-20">
-                  <svg className="w-8 h-8 text-[#C9A84C]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-
-                {/* Bottom Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20 flex flex-col items-start">
-                  <div className="font-sans text-[12px] tracking-[0.15em] text-[#C9A84C] uppercase">
-                    26 JUIN 2026 — 9H
-                  </div>
-                  <h3 className="font-serif text-[20px] md:text-[28px] font-bold text-[#F5F0E8] mt-1 leading-tight">
-                    Industrie & Technologies
-                  </h3>
-                  <Link href="/jpo">
-                    <span className="inline-block bg-[#C9A84C] text-[#0A0A0A] text-xs font-semibold py-2.5 px-6 rounded-full hover:bg-transparent hover:border-[#C9A84C] hover:text-[#C9A84C] border border-transparent transition-all duration-300 mt-3 cursor-pointer">
-                      S'inscrire à la session
-                    </span>
-                  </Link>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
+    </div>
+  </div>
+</section>
 
         {/* SECTION 8 — ACTUALITÉS */}
         <section id="actualites" className="w-full py-12 md:py-20 bg-[#0A0A0A]">
@@ -607,7 +591,7 @@ export default function LandingClient({ initialGalaPhotos }: { initialGalaPhotos
                   <div className="lg:col-span-7 flex flex-col space-y-4 group">
                     <div className="relative aspect-[16/10] w-full h-[240px] md:h-[400px] overflow-hidden bg-[#141414]">
                       <Image 
-                        src={articles[0].image_url} 
+                        src= "/images/Actualites/paternariat.jpg"
                         alt={articles[0].titre} 
                         fill 
                         className="grayscale-[20%] brightness-[0.8] object-cover rounded-none transition-transform duration-500 group-hover:scale-[1.02]" 
@@ -693,23 +677,25 @@ export default function LandingClient({ initialGalaPhotos }: { initialGalaPhotos
 
             {/* Loop Marquee */}
             <div className="relative w-full overflow-hidden py-4 bg-[#0A0A0A] flex items-center">
-<div className="flex animate-scroll min-w-full shrink-0 items-center justify-around gap-10">
-                  {partnersList.map((partner, i) => (
-                  <span 
-                    key={i} 
-                    className="h-10 flex items-center justify-center text-sm md:text-base font-sans font-bold tracking-[0.15em] uppercase text-[#F5F0E8] opacity-60 hover:opacity-100 hover:grayscale-0 hover:brightness-100 transition-all duration-300 select-none grayscale brightness-[2]"
-                  >
-                    {partner}
-                  </span>
-                ))}
-                {/* Seamless loop duplicates */}
+              <div className="flex animate-scroll min-w-full shrink-0 items-center justify-around gap-16">
                 {partnersList.map((partner, i) => (
-                  <span 
-                    key={`dup-${i}`} 
-                    className="h-10 flex items-center justify-center text-sm md:text-base font-sans font-bold tracking-[0.15em] uppercase text-[#F5F0E8] opacity-60 hover:opacity-100 hover:grayscale-0 hover:brightness-100 transition-all duration-300 select-none grayscale brightness-[2]"
-                  >
-                    {partner}
-                  </span>
+                  <div key={i} className="h-16 flex items-center justify-center shrink-0">
+                    <img 
+                      src={partner.logo} 
+                      alt={partner.name}
+                      className="h-full w-auto object-contain grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300 brightness-[2] hover:brightness-100"
+                    />
+                  </div>
+                ))}
+
+                {partnersList.map((partner, i) => (
+                  <div key={`dup-${i}`} className="h-16 flex items-center justify-center shrink-0">
+                    <img 
+                      src={partner.logo} 
+                      alt={partner.name}
+                      className="h-full w-auto object-contain grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300 brightness-[2] hover:brightness-100"
+                    />
+                  </div>
                 ))}
               </div>
             </div>

@@ -58,8 +58,8 @@ export default function ArticlesAdmin() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-serif text-2xl md:text-3xl font-bold text-[#1A1A1A]">Articles & Actualités</h1>
-          <p className="text-sm text-[#666666] mt-1">Gérez le contenu du blog et les actualités.</p>
+          <h1 className="font-sans text-2xl md:text-3xl font-bold text-[#F5F5F5]">Articles & Actualités</h1>
+          <p className="text-sm text-[#888888] mt-1">Gerez le contenu du blog et les actualités.</p>
         </div>
         <Link 
           href="/admin/articles/new"
@@ -69,14 +69,13 @@ export default function ArticlesAdmin() {
         </Link>
       </div>
 
-      <div className="flex border-b border-[#E5E3DD] overflow-x-auto">
+      <div className="flex border-b border-[rgba(255,255,255,0.08)] overflow-x-auto">
         {["Tous", "Publiés", "Brouillons", "Gala", "Caravane", "JPO", "Partenariat"].map(tab => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            // CORRECTION 3 : Nettoyage du template string
-            className={`px-6 py-3 text-sm font-bold capitalize whitespace-nowrap transition-colors border-b-2 ${
-              activeTab === tab ? "border-[#D4AF37] text-[#1A1A1A]" : "border-transparent text-[#666666] hover:text-[#1A1A1A]"
+            className={`px-6 py-3 text-sm font-bold capitalize whitespace-nowrap transition-colors border-b-2 cursor-pointer ${
+              activeTab === tab ? "border-[#D4AF37] text-[#C9A84C]" : "border-transparent text-[#888888] hover:text-[#F5F5F5]"
             }`}
           >
             {tab}
@@ -86,44 +85,42 @@ export default function ArticlesAdmin() {
 
       <div className="grid grid-cols-1 gap-4">
         {isLoading ? (
-          <div className="text-center py-12 text-[#666666]">Chargement...</div>
+          <div className="text-center py-12 text-[#888888]">Chargement...</div>
         ) : filteredArticles.length > 0 ? (
           filteredArticles.map(article => (
-            <div key={article.id} className="bg-white rounded-xl shadow-sm border border-[#E5E3DD] p-4 flex flex-col sm:flex-row gap-4 items-center transition-shadow hover:shadow-md">
-              <div className="h-20 w-20 shrink-0 bg-gray-100 rounded-lg overflow-hidden border border-[#E5E3DD] flex items-center justify-center">
+            <div key={article.id} className="bg-[#161616] rounded-xl border border-[rgba(255,255,255,0.08)] p-4 flex flex-col sm:flex-row gap-4 items-center transition-all hover:bg-[#1E1E1E]">
+              <div className="h-20 w-20 shrink-0 bg-[#0F0F0F] rounded-lg overflow-hidden border border-[rgba(255,255,255,0.08)] flex items-center justify-center">
                 {article.image_url ? (
                   <img src={article.image_url} alt={article.titre} className="h-full w-full object-cover" />
                 ) : (
-                  <span className="text-[#AAAAAA] text-xs font-bold uppercase">Image</span>
+                  <span className="text-[#555555] text-xs font-bold uppercase">Image</span>
                 )}
               </div>
               
               <div className="flex-1 min-w-0">
-                <h3 className="font-bold text-[#1A1A1A] text-lg truncate mb-1">{article.titre}</h3>
+                <h3 className="font-bold text-[#F5F5F5] text-lg truncate mb-1">{article.titre}</h3>
                 <div className="flex items-center gap-3 text-xs mb-2">
-                  <span className="bg-[#F8F7F4] text-[#666666] border border-[#E5E3DD] px-2 py-0.5 rounded font-semibold uppercase tracking-wider">
+                  <span className="bg-[#1A1A1A] text-[#888888] border border-[rgba(255,255,255,0.08)] px-2 py-0.5 rounded font-semibold uppercase tracking-wider">
                     {article.categorie}
                   </span>
-                  <span className="text-[#AAAAAA]">
+                  <span className="text-[#555555]">
                     {article.created_at ? format(new Date(article.created_at), "dd MMM yyyy", { locale: fr }) : "-"}
                   </span>
                 </div>
-                <p className="text-sm text-[#666666] truncate">{article.excerpt || "Aucun extrait"}</p>
+                <p className="text-sm text-[#888888] truncate">{article.excerpt || "Aucun extrait"}</p>
               </div>
 
               <div className="flex items-center gap-4 shrink-0 sm:ml-4">
-                {/* CORRECTION 4 : Nettoyage du template string */}
                 <span className={`text-[10px] uppercase font-bold px-2 py-1 rounded-md ${
-                  article.published ? "bg-[#1D9E75]/10 text-[#1D9E75]" : "bg-gray-100 text-gray-500"
+                  article.published ? "bg-[#1D9E75]/10 text-[#1D9E75]" : "bg-[#1A1A1A] text-[#555555]"
                 }`}>
                   {article.published ? "Publié" : "Brouillon"}
                 </span>
                 
                 <div className="flex items-center gap-2">
                   <Link 
-                    // CORRECTION 5 : Nettoyage du template string
                     href={`/admin/articles/${article.id}/edit`}
-                    className="p-2 text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                    className="p-2 text-blue-400 hover:bg-blue-900/20 rounded-md transition-colors"
                     title="Modifier"
                   >
                     <Edit2 className="h-4 w-4" />
@@ -140,8 +137,8 @@ export default function ArticlesAdmin() {
             </div>
           ))
         ) : (
-          <div className="text-center py-16 bg-white rounded-xl border border-dashed border-[#E5E3DD]">
-            <p className="text-[#666666] mb-4">Aucun article trouvé.</p>
+          <div className="text-center py-16 bg-[#161616] rounded-xl border border-dashed border-[rgba(255,255,255,0.08)]">
+            <p className="text-[#888888] mb-4">Aucun article trouvé.</p>
             <Link 
               href="/admin/articles/new"
               className="inline-flex items-center gap-2 px-4 py-2 bg-[#D4AF37] text-[#080808] rounded-lg text-sm font-bold hover:bg-[#E8C84D] transition-colors"
@@ -153,16 +150,16 @@ export default function ArticlesAdmin() {
       </div>
 
       <Dialog open={deleteDialog.isOpen} onOpenChange={(val) => !val && setDeleteDialog({ isOpen: false, id: null })}>
-        <DialogContent className="bg-white text-[#1A1A1A] border-[#E5E3DD]">
+        <DialogContent className="bg-[#161616] text-[#F5F5F5] border-[rgba(255,255,255,0.1)]">
           <DialogHeader>
-            <DialogTitle>Supprimer l'article ?</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-[#F5F5F5]">Supprimer l'article ?</DialogTitle>
+            <DialogDescription className="text-[#888888]">
               Cette action est irréversible. L'article sera définitivement supprimé.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <DialogClose>
-              <Button variant="outline">Annuler</Button>
+              <Button variant="outline" className="bg-transparent border-[rgba(255,255,255,0.15)] text-[#AAAAAA] hover:bg-[#1E1E1E] hover:text-[#F5F5F5]">Annuler</Button>
             </DialogClose>
             <Button 
               onClick={handleDelete} 

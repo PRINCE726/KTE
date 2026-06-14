@@ -97,8 +97,8 @@ export default function GalaAdmin() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-serif text-2xl md:text-3xl font-bold text-[#1A1A1A]">Inscriptions Gala</h1>
-          <p className="text-sm text-[#666666] mt-1">
+          <h1 className="font-sans text-2xl md:text-3xl font-bold text-[#F5F5F5]">Inscriptions Gala</h1>
+          <p className="text-sm text-[#888888] mt-1">
             <span className="bg-[#D4AF37]/20 text-[#D4AF37] font-bold px-2 py-0.5 rounded-full text-xs mr-2">{inscriptions.length} total</span>
             Gestion des réservations VIP et Classiques.
           </p>
@@ -106,21 +106,21 @@ export default function GalaAdmin() {
       </div>
 
       {/* Toolbar */}
-      <div className="bg-white p-4 rounded-xl shadow-sm border border-[#E5E3DD] flex flex-wrap gap-4 items-center">
+      <div className="bg-[#161616] p-4 rounded-xl border border-[rgba(255,255,255,0.08)] flex flex-wrap gap-4 items-center">
         <div className="relative flex-1 min-w-[200px]">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#666666]" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#888888]" />
           <input 
             type="text" 
             placeholder="Rechercher nom, email..." 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 border border-[#E5E3DD] rounded-lg text-sm focus:outline-none focus:border-[#D4AF37]"
+            className="w-full pl-9 pr-4 py-2 bg-[#0F0F0F] border border-[rgba(255,255,255,0.1)] text-[#F5F5F5] placeholder-[#444444] rounded-lg text-sm focus:outline-none focus:border-[#C9A84C]"
           />
         </div>
         <select 
           value={filterStatut} 
           onChange={(e) => setFilterStatut(e.target.value)}
-          className="border border-[#E5E3DD] rounded-lg px-3 py-2 text-sm bg-white focus:outline-none"
+          className="bg-[#0F0F0F] border border-[rgba(255,255,255,0.1)] text-[#F5F5F5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#C9A84C]"
         >
           <option value="Tous">Statut: Tous</option>
           <option value="en_attente">En attente</option>
@@ -130,7 +130,7 @@ export default function GalaAdmin() {
         <select 
           value={filterPass} 
           onChange={(e) => setFilterPass(e.target.value)}
-          className="border border-[#E5E3DD] rounded-lg px-3 py-2 text-sm bg-white focus:outline-none"
+          className="bg-[#0F0F0F] border border-[rgba(255,255,255,0.1)] text-[#F5F5F5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#C9A84C]"
         >
           <option value="Tous">Pass: Tous</option>
           <option value="bachelier">Bachelier</option>
@@ -138,39 +138,39 @@ export default function GalaAdmin() {
         </select>
         <button 
           onClick={handleExportCSV}
-          className="ml-auto inline-flex items-center gap-2 px-4 py-2 bg-[#F8F7F4] border border-[#E5E3DD] rounded-lg text-sm font-semibold hover:bg-[#E5E3DD] transition-colors"
+          className="ml-auto inline-flex items-center gap-2 px-4 py-2 bg-transparent border border-[rgba(255,255,255,0.15)] text-[#AAAAAA] hover:bg-[#1E1E1E] hover:text-[#F5F5F5] rounded-lg text-sm font-semibold transition-colors cursor-pointer"
         >
           <Download className="h-4 w-4" /> Export CSV
         </button>
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-xl shadow-sm border border-[#E5E3DD] overflow-hidden">
+      <div className="bg-[#161616] rounded-xl border border-[rgba(255,255,255,0.08)] overflow-hidden">
         <div className="overflow-x-auto">
           <Table>
-            <TableHeader className="bg-[#F8F7F4]">
+            <TableHeader className="bg-[#111111]">
               <TableRow>
-                <TableHead className="w-12 text-center">#</TableHead>
-                <TableHead>Nom</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Téléphone</TableHead>
-                <TableHead>Pass</TableHead>
-                <TableHead>Lycée</TableHead>
-                <TableHead>Statut</TableHead>
-                <TableHead>Date</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
+                <TableHead className="w-12 text-center text-[#666666]">#</TableHead>
+                <TableHead className="text-[#666666]">Nom</TableHead>
+                <TableHead className="text-[#666666]">Email</TableHead>
+                <TableHead className="text-[#666666]">Téléphone</TableHead>
+                <TableHead className="text-[#666666]">Pass</TableHead>
+                <TableHead className="text-[#666666]">Lycée</TableHead>
+                <TableHead className="text-[#666666]">Statut</TableHead>
+                <TableHead className="text-[#666666]">Date</TableHead>
+                <TableHead className="text-right text-[#666666]">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {isLoading ? (
-                <TableRow><TableCell colSpan={9} className="text-center py-8 text-[#666666]">Chargement...</TableCell></TableRow>
+                <TableRow><TableCell colSpan={9} className="text-center py-8 text-[#888888]">Chargement...</TableCell></TableRow>
               ) : filteredInscriptions.length > 0 ? (
                 filteredInscriptions.map((row, idx) => (
-                  <TableRow key={row.id}>
-                    <TableCell className="text-center text-[#666666] text-xs">{idx + 1}</TableCell>
-                    <TableCell className="font-bold text-[#1A1A1A]">{row.nom}</TableCell>
-                    <TableCell className="text-sm text-[#666666]">{row.email}</TableCell>
-                    <TableCell className="text-sm font-mono">{row.telephone}</TableCell>
+                  <TableRow key={row.id} className="hover:bg-[#1A1A1A]">
+                    <TableCell className="text-center text-[#888888] text-xs">{idx + 1}</TableCell>
+                    <TableCell className="font-bold text-[#F5F5F5]">{row.nom}</TableCell>
+                    <TableCell className="text-sm text-[#888888]">{row.email}</TableCell>
+                    <TableCell className="text-sm font-mono text-[#F5F5F5]">{row.telephone}</TableCell>
                     <TableCell>
                       {row.type_pass === "vip" ? (
                         <span className="bg-[#D4AF37] text-[#080808] text-[10px] font-bold uppercase px-2 py-0.5 rounded-full">
@@ -182,7 +182,7 @@ export default function GalaAdmin() {
                         </span>
                       )}
                     </TableCell>
-                    <TableCell className="text-sm">{row.lycee}</TableCell>
+                    <TableCell className="text-sm text-[#F5F5F5]">{row.lycee}</TableCell>
                     <TableCell>
                       <span className={`text-[10px] uppercase font-bold px-2 py-1 rounded-md inline-block text-center ${
                         row.statut === "confirme" ? "bg-[#1D9E75]/10 text-[#1D9E75]" :
@@ -192,7 +192,7 @@ export default function GalaAdmin() {
                         {row.statut ? row.statut.replace("_", " ") : "en attente"}
                       </span>
                     </TableCell>
-                    <TableCell className="text-xs text-[#666666]">
+                    <TableCell className="text-xs text-[#888888]">
                       {row.created_at ? format(new Date(row.created_at), "dd MMM yyyy", { locale: fr }) : "-"}
                     </TableCell>
                     <TableCell className="text-right">
@@ -209,7 +209,7 @@ export default function GalaAdmin() {
                         {row.statut !== "confirme" && (
                           <button 
                             onClick={() => setConfirmDialog({ isOpen: true, action: "confirme", id: row.id })}
-                            className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                            className="p-1.5 text-blue-400 hover:bg-blue-900/20 rounded-md transition-colors"
                             title="Confirmer"
                           >
                             <Check className="h-4 w-4" />
@@ -229,7 +229,7 @@ export default function GalaAdmin() {
                   </TableRow>
                 ))
               ) : (
-                <TableRow><TableCell colSpan={9} className="text-center py-8 text-[#666666]">Aucun résultat trouvé.</TableCell></TableRow>
+                <TableRow><TableCell colSpan={9} className="text-center py-8 text-[#888888]">Aucun résultat trouvé.</TableCell></TableRow>
               )}
             </TableBody>
           </Table>
@@ -237,16 +237,16 @@ export default function GalaAdmin() {
       </div>
 
       <Dialog open={confirmDialog.isOpen} onOpenChange={(val) => !val && setConfirmDialog({ isOpen: false, action: null, id: null })}>
-        <DialogContent className="bg-white text-[#1A1A1A] border-[#E5E3DD]">
+        <DialogContent className="bg-[#161616] text-[#F5F5F5] border-[rgba(255,255,255,0.1)]">
           <DialogHeader>
-            <DialogTitle>Êtes-vous sûr ?</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-[#F5F5F5]">Êtes-vous sûr ?</DialogTitle>
+            <DialogDescription className="text-[#888888]">
               Voulez-vous vraiment marquer cette inscription comme <strong className="uppercase">{confirmDialog.action}</strong> ?
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <DialogClose>
-              <Button variant="outline">Annuler</Button>
+              <Button variant="outline" className="bg-transparent border-[rgba(255,255,255,0.15)] text-[#AAAAAA] hover:bg-[#1E1E1E] hover:text-[#F5F5F5]">Annuler</Button>
             </DialogClose>
             <Button 
               onClick={handleUpdateStatus} 

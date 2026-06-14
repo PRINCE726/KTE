@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import AdminSidebar from "../AdminSidebar";
 import AdminTopbar from "../AdminTopbar";
+import { AdminThemeProvider } from "@/components/admin/AdminThemeProvider";
 
 export default async function AdminLayout({
   children,
@@ -17,7 +18,7 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className="min-h-screen bg-[#F8F7F4] text-[#1A1A1A] flex font-sans">
+    <AdminThemeProvider>
       <AdminSidebar />
       
       <div className="flex-1 flex flex-col min-w-0">
@@ -26,6 +27,7 @@ export default async function AdminLayout({
           {children}
         </main>
       </div>
-    </div>
+    </AdminThemeProvider>
   );
 }
+

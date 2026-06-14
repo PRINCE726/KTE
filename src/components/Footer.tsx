@@ -50,6 +50,13 @@ export default function Footer() {
                   Actualités
                 </Link>
               </li>
+              <li>            
+            <Link href="/admin" className="text-[10px] text-[#666666] hover:text-[#C9A84C]">
+             Accès Administration
+             </Link>
+             </li>
+
+
             </ul>
           </div>
 
