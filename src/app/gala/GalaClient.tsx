@@ -689,8 +689,8 @@ export default function GalaClient({ settings, initialPhotos }: { settings: Reco
                     value={formData.pass}
                     onChange={(e) => setFormData({ ...formData, pass: e.target.value })}
                     options={[
-                      { value: "bachelier", label: "Pass Classique Class - 15 000 FCFA" },
-                      { value: "vip", label: "Pass VIP Prestige - 25 000 FCFA" },
+                      { value: "bachelier", label: "Pass Classique Class - 5 000 FCFA" },
+                      { value: "vip", label: "Pass VIP Prestige - 10 000 FCFA" },
                     ]}
                   />
                 </div>

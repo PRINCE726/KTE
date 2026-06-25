@@ -94,8 +94,7 @@ const poleDetails = {
 };
 
 export default function JPOPage() {
-type PoleKey = "Logistique" | "sante" | "tech" | "arts" | "business";
-const [activePole, setActivePole] = useState<PoleKey>("sante");
+  const [activePole, setActivePole] = useState< "Logistique" | "sante" | "technologie" | "culture" | "Gestion">("sante");
   const [formData, setFormData] = useState({
     nom: "",
     telephone: "",
@@ -159,7 +158,8 @@ const [activePole, setActivePole] = useState<PoleKey>("sante");
     }
   };
 
-const currentPole = poleDetails[activePole as PoleKey];
+  const currentPole = poleDetails[activePole];
+
   return (
     <div className="w-full bg-background min-h-screen text-foreground overflow-x-hidden flex flex-col pt-20">
       <Navbar />
@@ -214,13 +214,23 @@ const currentPole = poleDetails[activePole as PoleKey];
             {/* Radix styled custom Tabs */}
             <Tabs defaultValue="sante" className="max-w-4xl mx-auto">
               <div className="flex justify-center mb-10">
-               <TabsList>
-    <TabsTrigger value="logistique" onClick={() => setActivePole("Logistique")}>🚜 Logistique</TabsTrigger>
-    <TabsTrigger value="sante" onClick={() => setActivePole("sante")}>🩺 Santé</TabsTrigger>
-    <TabsTrigger value="tech" onClick={() => setActivePole("tech")}>💻 Technologies</TabsTrigger>
-  <TabsTrigger value="arts" onClick={() => setActivePole("arts")}>🎨 Culture</TabsTrigger>
-  <TabsTrigger value="business" onClick={() => setActivePole("business")}>⚖️ Gestion</TabsTrigger>
-  </TabsList>
+                <TabsList className="flex-wrap h-auto p-1.5">
+                     <TabsTrigger value="logistique" onClick={() => setActivePole("sante")} className="px-5 py-2.5">
+                     🚜 Logistique
+                  </TabsTrigger>
+                  <TabsTrigger value="sante" onClick={() => setActivePole("sante")} className="px-5 py-2.5">
+                    🩺 Santé
+                  </TabsTrigger>
+                  <TabsTrigger value="tech" onClick={() => setActivePole("tech")} className="px-5 py-2.5">
+                    💻 Technologies & Industrie
+                  </TabsTrigger>
+                  <TabsTrigger value="arts" onClick={() => setActivePole("arts")} className="px-5 py-2.5">
+                    🎨 Culture
+                  </TabsTrigger>
+                  <TabsTrigger value="business" onClick={() => setActivePole("business")} className="px-5 py-2.5">
+                    ⚖️ Gestion, Management & Droit
+                  </TabsTrigger>
+                </TabsList>
               </div>
 
               {/* Dynamic content area based on state */}
@@ -489,4 +499,3 @@ const currentPole = poleDetails[activePole as PoleKey];
     </div>
   );
 }
-
